@@ -22,6 +22,8 @@ public class MainActivity extends ActionBarActivity {
     public final static String KEY_BROADCAST_MODE = "MODE";
     private final static String PREFS_NAME = "MONEY";
     public final static String KEY_MONEY = "KEY_MONEY";
+    public final static int ADD = 100;
+    public final static int SUB = 50;
 
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
@@ -31,11 +33,11 @@ public class MainActivity extends ActionBarActivity {
                     showMoney(money_num);
                     break;
                 case 1:
-                    money_num += 100;
+                    money_num += ADD;
                     showMoney(money_num);
                     break;
                 case 2:
-                    money_num -= 50;
+                    money_num -= SUB;
                     showMoney(money_num);
                     break;
                 default:

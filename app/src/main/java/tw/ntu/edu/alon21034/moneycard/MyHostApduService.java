@@ -20,8 +20,9 @@ public class MyHostApduService extends HostApduService {
         return "Hello".getBytes();
     }
 
-    private byte[] getNextMessage() {
-        return new byte[]{(byte)0x01, (byte)0x23, (byte)0x34, (byte)0x56};
+    private byte[] getNextMessage(int n) {
+        Log.d("!!", "!! return " + n + "  " + (byte)MainActivity.money_num);
+        return (n+"").getBytes();
     }
 
     @Override
@@ -32,6 +33,7 @@ public class MyHostApduService extends HostApduService {
         } else {
             Intent intent = new Intent();
             intent.setAction(MainActivity.FILTER);
+            int n = MainActivity.money_num;
             if (commandApdu[0] == (byte)0xaa) {
                 intent.putExtra(MainActivity.KEY_BROADCAST_MODE, 0);
                 sendBroadcast(intent);
@@ -39,16 +41,21 @@ public class MyHostApduService extends HostApduService {
             } else if (commandApdu[0] == (byte)0xbb) {
                 intent.putExtra(MainActivity.KEY_BROADCAST_MODE, 1);
                 sendBroadcast(intent);
+                n += MainActivity.ADD;
                 Log.d("!!","!! add");
             } else if (commandApdu[0] == (byte)0xcc) {
                 intent.putExtra(MainActivity.KEY_BROADCAST_MODE, 2);
                 sendBroadcast(intent);
+                n -= MainActivity.SUB;
                 Log.d("!!", "!! sub");
             } else {
 
             }
-            sendResponseApdu(new byte[]{(byte) MainActivity.money_num});
-            return new byte[]{(byte)MainActivity.money_num};
+            sendResponseApdu(getNextMessage(n));
+            return getNextMessage(n);
+
+//            sendResponseApdu(new byte[]{(byte) MainActivity.money_num});
+//            return new byte[]{(byte)MainActivity.money_num};
         }
     }
 

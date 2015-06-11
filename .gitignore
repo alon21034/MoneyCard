@@ -1,3 +1,5 @@
+MoneyCardGUI/bin/*
+
 .gradle
 /local.properties
 /.idea/workspace.xml
@@ -32,4 +34,32 @@ Thumbs.db
 # Eclipse project files
 .classpath
 .project
+
+.DS_Store
+test
+*.*~
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
 
