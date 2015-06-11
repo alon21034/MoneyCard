@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MoneyCard</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="service_description">Service Description</string>
+    <string name="aid_description">Aid Description</string>
+</resources>
